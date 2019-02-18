@@ -1,7 +1,7 @@
 {
   "name": "learning__writen",
   "version": "1.0.0",
-  "description": "模块化是指把一个复杂的系统分解到多个模块以方便编码",
+  "description": "前端架构学习__ing",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
