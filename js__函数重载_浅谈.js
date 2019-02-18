@@ -57,6 +57,6 @@ addMethod(people,'find', function(firstName,lastName) {
 		 }
 	 }
 });
-console.log(people.find()); //["Dean Edwards", "Alex Russell", "Dean Tom"]
-console.log(people.find("Dean")); //["Dean Edwards", "Dean Tom"]
-console.log(people.find("Dean Edwards")); //["Dean Edwards"]
+// console.log(people.find()); //["Dean Edwards", "Alex Russell", "Dean Tom"]
+// console.log(people.find("Dean")); //["Dean Edwards", "Dean Tom"]
+// console.log(people.find("Dean Edwards")); //["Dean Edwards"]
