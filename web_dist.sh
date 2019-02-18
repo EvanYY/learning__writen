@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m 'update CommonJS AMD'
+git commit -m 'ES6 简介'
 git push
