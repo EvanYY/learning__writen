@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m 'ES6 简介'
+git commit -m 'learn webpack'
 git push
