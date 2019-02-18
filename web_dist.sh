@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m 'learn webpack'
+git commit -m 'add js reload'
 git push

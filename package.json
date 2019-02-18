@@ -1,0 +1,24 @@
+{
+  "name": "learning__writen",
+  "version": "1.0.0",
+  "description": "模块化是指把一个复杂的系统分解到多个模块以方便编码",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvanYY/learning__writen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvanYY/learning__writen/issues"
+  },
+  "homepage": "https://github.com/EvanYY/learning__writen#readme",
+  "devDependencies": {
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3"
+  }
+}

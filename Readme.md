@@ -49,3 +49,9 @@ Webpack 是一个打包模块化 JavaScript 的工具，在Webpack里一切文�
 一切文件：JavaScript 、css、 scss、 图片、 模板，在webpack严重都是一个模块，这样的好处是能清晰的描述出各个模块之间的依赖关系，以方便webpack 对模块进行 组合和打包。经过webpack的处理，最终会输出浏览器能使用的静态资源。
 
 ## 3.1 安装 webpack
+
+// 本地安装q
+```
+npm init -y
+npm install webpack webpack-cli -D
+```
