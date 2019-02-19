@@ -6,16 +6,31 @@ let fs = require('fs');
 let path = require('path');
 let script = fs.readFileSync(entry,'utf8');
 let modules = [];
+let styleLoader = function (source) { // 负责将结果进行更改 更改后再继续走
+	// source 代表的就是样式文件中的内容
+
+	return `
+	let style = document.createElement('style');
+	style.innerHTML = ${
+		JSON.stringify(source).replace(/\\r\\n/g, '')
+	}
+	documnet.head.appendChild(style)
+	`
+}
 // 处理依赖关系
 script = script.replace(/require\(['"](.+?)['"]\)/g,function() {
 	let name = path.join('./src',arguments[1]); // ./src/a.js
 	let content = fs.readFileSync(name,'utf8');
+	if(/\.css$/.test(name)) {
+		content = styleLoader(content)
+	}
 	modules.push({
 		name,
 		content
 	})
 	return `require('${name}')`
 })
+
 let ejs = require('ejs');
 // '<a><%=name%></a>'
 let template = `
