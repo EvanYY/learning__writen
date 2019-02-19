@@ -3,10 +3,21 @@
 let entry = './src/index.js'; // 入口文件
 let output = './dist/main.js'; // 出口文件
 let fs = require('fs');
+let path = require('path');
 let script = fs.readFileSync(entry,'utf8');
-
+let modules = [];
+// 处理依赖关系
+script = script.replace(/require\(['"](.+?)['"]\)/g,function() {
+	let name = path.join('./src',arguments[1]); // ./src/a.js
+	let content = fs.readFileSync(name,'utf8');
+	modules.push({
+		name,
+		content
+	})
+	return `require('${name}')`
+})
 let ejs = require('ejs');
-'<a><%=name%></a>'
+// '<a><%=name%></a>'
 let template = `
  (function (modules) { // webpackBootstrap
  	// The module cache
