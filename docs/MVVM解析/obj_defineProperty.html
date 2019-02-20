@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>obj_defineProperty</title>
+</head>
+
+<body>
+
+	<script>
+		let obj = {};
+		Object.defineProperty(obj, 'school', {
+			configurable: true, // 是否可配置
+			// writable: true, // 是否可编写
+			enumerable: true, // 可枚举
+			// value: 'yy',
+			// 出现get set 不允许出现 writable value
+			get() {
+				// 获取obj.school 值时 会调用 get方法
+				return 'aaaa'
+			},
+			set(val) {
+				// 改变school 值时会调用 set方法
+				console.log(val)
+			}
+		});
+		for (let key in obj) {
+			console.log(key)
+			console.dir(obj[key])
+		}
+	</script>
+</body>
+
+</html>
