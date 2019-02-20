@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>a.html</title>
+</head>
+
+<body>
+	AAAAAAA
+	<h2>域名 一级域名 二级域名 必须是同一级域名</h2>
+	<h2>a是通过 http://a.zf.cn:3001</h2>
+	<!-- <iframe src="http://b.zf.cn:3001" frameborder="0" onload="load()" id="frame"></iframe> -->
+	<script>
+		document.domain = 'zf.cn';
+
+		function load() {
+			let frame = document.getElementById('frame');
+			// 获取b.html 变量 a
+			console.log(frame.contentWindow.a)
+		}
+	</script>
+</body>
+
+</html>
