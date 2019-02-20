@@ -7,14 +7,20 @@
 	<title>数据劫持</title>
 </head>
 <body>
-	<div id="app">{{a}}</div>
+	<div id="app">
+		<p>a的值{{a.a}}</p>
+		<div>b的值{{b}}</div>
+	</div>
 	<script src="./js/mvvm.js"></script>
 	<script>
 
 		let vm = new Vue({
 			el:'#app',
 			data:{
-				a:1
+				a:{
+					a: 22
+				},
+				b: 33
 			}
 		})
 	</script>
