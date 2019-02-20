@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m 'cros  by Express setRequestHeaders Allow-Control details by cors.files'
+git commit -m 'postMessage ->> a.html with b.html charts'
 git push
