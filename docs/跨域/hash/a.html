@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>a.html</title>
+</head>
+
+<body>
+	AAAAAAA
+
+	<p>路径后面的hash值可以用来通信</p>
+	<p>目的a想访问c</p>
+	<p>a给c传一个hash值 c收到a的hash值后 c把hash值传递给b b将结果放到a的hash值中</p>
+	<iframe src="http://localhost:3003/c.html#iloveyou" frameborder="3" ></iframe>
+	<script>
+		window.onhashchange = function() {
+			console.log(window.location.hash)
+		}
+	</script>
+</body>
+
+</html>
