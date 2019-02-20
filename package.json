@@ -19,6 +19,7 @@
   "homepage": "https://github.com/EvanYY/learning__writen#readme",
   "devDependencies": {
     "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   }

@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m 'learn webpack details styleLoader'
+git commit -m 'jsonp learning'
 git push
