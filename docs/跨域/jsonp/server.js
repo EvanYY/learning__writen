@@ -8,3 +8,4 @@ app.get('/say',function(req,res) {
 	res.end(`${cb}('我不爱你')`)
 })
 app.listen(3000);
+console.log('succsess')
