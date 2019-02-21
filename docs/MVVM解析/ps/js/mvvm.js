@@ -14,7 +14,18 @@ function Vue(options = {}) {
 			}
 		});
 	}
+	initComputed.call(this)
 	new Compile(options.el, this);
+}
+function initComputed() { // 具有缓存功能
+	let vm = this;
+	let computed = this.$options.computed; // Object.keys {name:1,age:2} => []
+	Object.keys(computed).forEach(function(key) {
+		Object.defineProperty(vm,key, {
+			get: typeof computed[key] === 'function' ? computed[key] : computed[key].get,
+			set(){}
+		})
+	})
 }
 // 将$options 属性值绑定在 dom {{}} 模板中
 function Compile(el, vm) {

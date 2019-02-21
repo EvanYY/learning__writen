@@ -24,8 +24,10 @@ var people = {
 
 function addMethod(object, name, fn) {
 	var old = object[name];
+
 	object[name] = function () {
 		if (fn.length === arguments.length) {
+
 			return fn.apply(this, arguments);
 		} else if (typeof old === 'function') {
 			return old.apply(this, arguments);
@@ -40,6 +42,7 @@ function addMethod(object, name, fn) {
 addMethod(people, 'find', function () {
 	return this.values
 })
+console.log(people)
 addMethod(people, 'find', function(firstName) {
 	let ret = [];
 	for(let i = 0; i <this.values.length;i++) {
@@ -49,6 +52,8 @@ addMethod(people, 'find', function(firstName) {
 	};
 	return ret
 })
+console.log(people)
+
 addMethod(people,'find', function(firstName,lastName) {
 	let ret =[];
 	 for(var i=0;i<this.values.length;i++) {
@@ -57,6 +62,8 @@ addMethod(people,'find', function(firstName,lastName) {
 		 }
 	 }
 });
+console.log(people)
+
 // console.log(people.find()); //["Dean Edwards", "Alex Russell", "Dean Tom"]
 // console.log(people.find("Dean")); //["Dean Edwards", "Dean Tom"]
 // console.log(people.find("Dean Edwards")); //["Dean Edwards"]
