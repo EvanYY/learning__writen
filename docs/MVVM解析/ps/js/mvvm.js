@@ -45,6 +45,24 @@ function Compile(el, vm) {
 				})
 				// 替换的逻辑
 				node.textContent = text.replace(/\{\{(.*)\}\}/, val)
+			};
+			if(node.nodeType === 1) {
+				// 元素节点
+				let nodeAttrs = node.attributes; // 获取当前dom节点所有属性
+				Array.from(nodeAttrs).forEach(function(attr){
+					let name = attr.name; // type='text'
+					let exp = attr.value; // v-model="b"
+					if(name.indexOf('v-') === 0) {
+						node.value = vm[exp];
+					};
+					new Watcher(vm,exp,function(newValue) {
+						node.value = newValue; // 当watcher触发时会自动将内容放到输入框内
+					});
+					node.addEventListener('input', function(e) {
+						let newValue= e.target.value;
+						vm[exp] = newValue;
+					})
+				})
 			}
 			if (node.childNodes) {
 				replace(node)

@@ -20,6 +20,8 @@
   "devDependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "react": "^16.8.2",
+    "vue": "^2.6.6",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "ws": "^6.1.4"
