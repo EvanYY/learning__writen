@@ -1,15 +1,3 @@
-// // 发布订阅模式 订阅 在有发布[fn1,fn2,fn3]\
-// // 绑定的方法 都有一个update属性
-// function Dep() {
-// 	this.subs =[]
-// }
-// Dep.prototype.addSub = function(sub) {
-// 	// 订阅
-// 	this.subs.push(sub);
-// };
-// Dep.prototype.notify
-
-
 function Vue(options = {}) {
 	this.$options = options; // 将所有属性挂在在 $options
 	var data = this._data = this.$options.data; // {a:1}
@@ -52,6 +40,10 @@ function Compile(el, vm) {
 					// 取this.a.a this.b
 					val = val[k];
 				});
+				new Watcher(vm, RegExp.$1, function (newValue) { // 函数需要接收一个新值
+					node.textContent = text.replace(/\{\{(.*)\}\}/, newValue)
+				})
+				// 替换的逻辑
 				node.textContent = text.replace(/\{\{(.*)\}\}/, val)
 			}
 			if (node.childNodes) {
@@ -69,18 +61,21 @@ function Compile(el, vm) {
 // vm.$options
 // 观察对象给对象增加 Object.defineProperty
 function Observe(data) {
+	let dep = new Dep()
 	for (let key in data) { // 把data属性通过 Object.defineProperty方式 定义属性
 		let val = data[key];
 		observe(val);
 		Object.defineProperty(data, key, {
 			enumerable: true,
 			get() {
+				Dep.target && dep.addSub(Dep.target); // [watcher]
 				return val;
 			},
 			set(newValue) {
 				if (newValue === val) return;
 				val = newValue; // 如果以后获取值的时候将刚才设置的值再丢回去
-				observe(newValue)
+				observe(newValue);
+				dep.notify();
 			}
 		})
 	}
@@ -94,3 +89,39 @@ function observe(data) {
 // 深度响应 因为每次赋予一个新对象时会给这个新对象增加数据劫持
 // 数据劫持 通过Object.defineProperty()来劫持对象属性的setter和getter操作，在数据变动时做你想要做的事情
 // node 同构 http://www.cnblogs.com/woodk/p/8353573.html
+
+// 发布订阅 实现数据关联
+function Dep() {
+	this.subs = []
+}
+Dep.prototype.addSub = function (sub) {
+	// 订阅
+	this.subs.push(sub);
+};
+Dep.prototype.notify = function () {
+	this.subs.forEach(sub => sub.update())
+};
+
+function Watcher(vm, exp, fn) {
+	// Watcher 是一个类 通过这个类创建的实例都拥有update方法
+	this.fn = fn;
+	this.vm = vm;
+	this.exp = exp; // 添加到订阅中
+	Dep.target = this;
+	let val = vm;
+	let arr = exp.split('.');
+	arr.forEach(function (k) {
+		// this.a.a 取值会调用默认的get方法
+		val = val[k];
+	});
+	Dep.target = null;
+};
+Watcher.prototype.update = function () {
+	let val = this.vm;
+	let arr = this.exp.split('.');
+	arr.forEach(function (k) {
+		// this.a.a 取值会调用默认的get方法
+		val = val[k];
+	});
+	this.fn(val)
+};
