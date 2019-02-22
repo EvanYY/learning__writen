@@ -1,4 +1,4 @@
 git pull
 git add .
-git commit -m 'add git Readme.md introduce base optarition of code git '
+git commit -m 'test file ingore'
 git push

@@ -77,9 +77,7 @@
 如果你确实想添加该文件，可以用-f强制添加到Git `git add -f App.class`
 > + 检查文件在.gitignore文件的哪条忽略规则中 `git check-ignore -v App.class`
 > + 配置别名 `git config --global alias.<alias> <'git command'>`
-<script>
-// –global参数是全局参数，也就是这些命令在这台电脑的所有Git仓库下都有用 配置Git的时候，加上–global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用
-// 每个仓库的Git配置文件都放在.git/config文件中 当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中 删除别名: 别名就在配置文件中[alias]行后面，要删除别名，直接把对应的行删掉即可 配置别名也可以直接修改这个文件，如果改错了，可以删掉文件重新通过命令配置
-</script>
+–global参数是全局参数，也就是这些命令在这台电脑的所有Git仓库下都有用 配置Git的时候，加上–global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用
+每个仓库的Git配置文件都放在.git/config文件中 当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中 删除别名: 别名就在配置文件中[alias]行后面，要删除别名，直接把对应的行删掉即可 配置别名也可以直接修改这个文件，如果改错了，可以删掉文件重新通过命令配置
 `git config –global alias.unstage 'reset HEAD'`
 配置别名: 把暂存区的修改撤销掉（unstage），重新放回工作区
