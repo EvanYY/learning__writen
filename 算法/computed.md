@@ -61,3 +61,43 @@ function sortBy (attr,rev) {
 		return 0
 	}
 }
+
+## 括号匹配问题
+- 给一个括号表达式，中间只有[]和(),判断这个表达式是两边括号是不是平衡的。
+比如 [(())]是平衡的，比如[()(()]就是不平衡的
+基于栈的解法
+function match(n,c) {
+	return (c === '[' && n === ']') || (c === '(' && n === ')')
+}
+function is_balance(str) {
+	const [first, ...others] = str
+	const stack = [first]
+	while(others.length > 0) {
+		const c = stack[stack.length -1]
+		const n = others.shift()
+		if(!match(n,c)) {
+			stack.push(n)
+		}else {
+			stack.pop()
+		}
+	}
+	return stack.length === 0
+}
+
+## Set 集合类
+add(element) // 添加、去重
+has(element) // 判断是否存在
+delete(element) // 删除
+values() // 返回terator
+
+写一个方法，给定一个数组，判断数组中某一项，或者任意多项的和，是否被另一个整数整除
+PS:
+solve([3,5,8], 13) = true
+solve([3,9], 13) = false
+
+相当于判断子数组的余数和 solve([7,8,2],7) 等价于 solve([0,1,2],7)
+思路：
+function solve(arr,N) {
+	const s = new Set()
+	for(let i = 0; i <=)
+}
